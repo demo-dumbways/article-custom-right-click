@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Modifikasi Klik Kanan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="h-screen flex justify-center items-center">
+      Klik kanan pada Touch Pad/Mouse Anda
+    </div>
+
+    <div
+      id="rightClickMenu"
+      class="absolute rounded w-52 drop-shadow-lg bg-slate-50 text-sm border hidden py-1"
+    >
+      <div class="hover:bg-gray-200 px-2 cursor-pointer py-1">Full Screen</div>
+      <div class="hover:bg-gray-200 px-2 cursor-pointer py-1">Copy</div>
+      <div class="hover:bg-gray-200 px-2 cursor-pointer py-1">Paste</div>
+      <div
+        class="hover:bg-gray-200 px-2 cursor-pointer py-1 border-t-2 border-zinc-300"
+      >
+        Go to
+        <a href="https://dumbways.id" target="_blank" class="hover:text-sky-600"
+          >Dumbways.id</a
+        >
+      </div>
+    </div>
+
+    <script>
+      document.oncontextmenu = rightClick;
+
+      function rightClick(e) {
+        e.preventDefault();
+
+        const menu = document.getElementById('rightClickMenu');
+
+        menu.classList.add('block');
+        menu.classList.remove('hidden');
+        menu.style.left = e.pageX + 'px';
+        menu.style.top = e.pageY + 'px';
+      }
+    </script>
+  </body>
+</html>
